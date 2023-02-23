@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  api:
+    build: .
+    container_name: 'api'
+    ports:
+      - "80:4000"
+    depends_on:
+      - db
+    restart: "always"
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+  db:
+    image: mysql
+    container_name: 'db'
+    ports:
+      - "3306:3306"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --default-authentication-plugin=mysql_native_password
+    volumes:
+      - sequelize-volume:/var/lib/mysql
+      - ./mysql/initdb.d:/docker-entrypoint-initdb.d
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+volumes:
+  sequelize-volume:

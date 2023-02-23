@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": ["airbnb-base","prettier"],
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "no-console": "off",
+        "prefer-template": "off",
+        "semi": ["error", "always"],
+        "quotes": ["error", "single"],
+        "no-unused-vars": "off",
+        "import/no-extraneous-dependencies": "off",
+        "no-path-concat": "off",
+        "import/no-dynamic-require": "off",
+        "consistent-return": "off",
+        "no-return-assign": "off"
+    }
+}
